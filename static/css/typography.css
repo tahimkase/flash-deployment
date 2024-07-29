@@ -1,0 +1,10 @@
+/* Typography styling */
+h3 {
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+}

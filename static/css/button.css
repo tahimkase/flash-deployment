@@ -1,0 +1,96 @@
+/* button.css */
+
+/* General button styling */
+button {
+    background: var(--button-background-color);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button i {
+    margin-right: 5px; /* Add space between icon and text */
+}
+
+button:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.btn-delete {
+    background-color: var(--delete-button-background-color);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: var(--delete-button-hover-background-color);
+}
+
+.btn-add {
+    background-color: var(--button-background-color);
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+[data-theme="dark"] .btn-add {
+    color: white; /* Ensure text is white in dark mode */
+}
+
+.button-calculate {
+    background-color: #28a745; /* Set to green */
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 5px; /* Adjust margins to ensure buttons are side by side */
+    border: none;
+    cursor: pointer;
+    width: auto; /* Auto width to fit text */
+    display: inline-block; /* Align inline */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.theme-toggle {
+    background-color: var(--button-background-color);
+    color: var(--header-text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.theme-toggle:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.theme-toggle-container {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-start !important;
+}
+
+

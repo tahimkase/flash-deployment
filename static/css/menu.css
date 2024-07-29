@@ -1,0 +1,43 @@
+
+header {
+    position: relative; /* Ensures that absolutely positioned children are placed relative to this container */
+    width: 100%; /* Full width to span the header across the screen */
+    padding: 10px 20px; /* Add padding */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    display: flex; /* Enables flexbox layout */
+    justify-content: space-between; /* Spaces children (title and menu icon) */
+    align-items: center; /* Vertically aligns children in the middle */
+}
+
+
+
+.menu-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    background-color: #1B2B34;
+    top: 70px;
+    right: 0;
+    width: 150px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.menu a:hover {
+    background-color: #333;
+}

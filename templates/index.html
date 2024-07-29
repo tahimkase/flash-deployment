@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/input.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/report.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="title-container">
+            <h1 class="budget-calculator-title">Budget Calculator</h1>
+            <!-- Move the introductory text here -->
+            <p class="intro-text">Enter your monthly income (after taxes), and the budget pie chart will show your total expenses for the month.</p>
+        </div>
+        
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+        </div>
+        <div class="menu" id="menu">
+            <a href="/">Home</a>
+            <div class="theme-dropdown">
+                <a href="javascript:void(0);">Theme</a>
+                <div class="theme-options">
+                    <button id="light-mode-toggle">Light Mode</button>
+                    <button id="dark-mode-toggle">Dark Mode</button>
+                </div>
+            </div>
+            <a href="/about">About</a>
+        </div>
+        
+    </header>
+    
+    <div class="container">
+        <div class="left-column">
+            <form id="budget-form" action="{{ url_for('calculate') }}" method="post">
+                <div class="field-container">
+                    <h3>Monthly Income (after taxes)</h3>
+                    <input type="number" name="income" class="input-field input-income" placeholder="$ 0.00" required>
+                </div>
+                <div class="field-container">
+                    <h3>Expenses</h3>
+                    <div id="expenses" class="expenses-container">
+                        <button type="button" class="btn-add" onclick="addExpense()"><i class="fas fa-plus"></i> Add Another Expense</button>
+                    </div>
+                </div>
+
+                <div class="buttons-container">
+                    <button type="submit" name="action" value="export_excel" class="button-calculate">Export to Excel</button>
+
+                    <button type="submit" name="action" value= "generate_pdf" class="button-calculate">Generate PDF Report</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="right-column">
+            <div id="savings-display" class="savings-display">
+                Monthly Savings: $<span id="savings">0.00</span>
+            </div>
+            <div class="pie-chart-container">
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

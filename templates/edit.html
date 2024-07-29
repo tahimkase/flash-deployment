@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- head section-->
+     <head>
+        <meta charset="UTF-8">
+        <title>Edit Expense</title>
+     </head>
+     <body>
+        <h1>Edit Expense</h1>
+        <!-- form for editing an expense -->
+        <form action="{{ url_for('edit', index=index)}}" method="post">
+            <label for="expense_category">Categtory: </label>
+            <input type="text" id="expense_category" name="expense_category" value="{{ expense[0]}}" required>
+            <br>
+            <label for="expense_type">Expense Type: </label>
+            <input type="text" id="expense_type" name="expense_type" value="{{ expense[1] }}" required>
+            <br>
+            <label for="expense_amount">Amount: </label>
+            <input type="number" id="expense_amount" name="expense_amount" step="0.01" value="{{ expense[2] }}" required>
+            <br>
+            <button type="submit">Update Expense</button>
+        </form>
+     </body>
+</html>

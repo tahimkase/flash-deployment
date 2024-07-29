@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50b3a2;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+        .content h2 {
+            margin-top: 0;
+        }
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .content table, .content th, .content td {
+            border: 1px solid #ddd;
+        }
+        .content th, .content td {
+            padding: 8px;
+            text-align: left;
+        }
+        .chart-container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Budget Summary</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h2>Total Income: ${{ total_income }}</h2>
+            <h2>Total Expenses: ${{ total_expenses }}</h2>
+            <h2>Remaining Budget: ${{ remaining_budget }}</h2>
+            <div class="chart-container">
+                <canvas id="budgetChart"></canvas>
+            </div>
+            <a href="{{ url_for('index') }}">Back to Budget Calculator</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('budgetChart').getContext('2d');
+            const remainingBudget = JSON.parse('{{ remaining_budget | tojson }}');
+            const totalExpenses = JSON.parse('{{ total_expenses | tojson }}');
+            console.log('Remaining Budget:', remainingBudget);  // Debugging log
+            console.log('Total Expenses:', totalExpenses);      // Debugging log
+            const budgetChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Remaining Budget', 'Total Expenses'],
+                    datasets: [{
+                        label: 'Budget',
+                        data: [remainingBudget, totalExpenses],
+                        backgroundColor: ['#50b3a2', '#e8491d'],
+                        hoverOffset: 4
+                    }]
+                }
+            });
+        });
+    </script>
+</body>
+</html>
